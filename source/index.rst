@@ -61,13 +61,13 @@ C Programming Language
 
 .. Attention::
 
-	Set the Proxy for APT on Ubuntu
+	Для вирішення проблеми з оновленням пакетів в лабораторіях НТУ "ХПІ" налаштуйте проксі для APT в Ubuntu. Для цього потрібно виконати нижче зазначені дії.
 
-	**1)** Create the following file:
+	**1)** Створити файл
 
 	*/etc/apt/apt.conf.d/proxy.conf*
 
-	**2)** Add the following lines:
+	**2)** Додати в створений файл наступні рядки
 
 	*Acquire::http::proxy "http://172.17.10.2:3128";*
 

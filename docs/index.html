@@ -106,10 +106,10 @@
 </ul>
 <div class="admonition attention">
 <p class="admonition-title">Увага</p>
-<p>Set the Proxy for APT on Ubuntu</p>
-<p><strong>1)</strong> Create the following file:</p>
+<p>Для вирішення проблеми з оновленням пакетів в лабораторіях НТУ «ХПІ» налаштуйте проксі для APT в Ubuntu. Для цього потрібно виконати нижче зазначені дії.</p>
+<p><strong>1)</strong> Створити файл</p>
 <p><em>/etc/apt/apt.conf.d/proxy.conf</em></p>
-<p><strong>2)</strong> Add the following lines:</p>
+<p><strong>2)</strong> Додати в створений файл наступні рядки</p>
 <p><em>Acquire::http::proxy «http://172.17.10.2:3128»;</em></p>
 <p><em>Acquire::https::proxy «http://172.17.10.2:3128»;</em></p>
 </div>
