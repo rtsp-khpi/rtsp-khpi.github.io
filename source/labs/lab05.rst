@@ -44,3 +44,12 @@
 
 Розробити bash-скрипт, який, у випадку перейменування хоча б одного файлу у вказаній директорії за допомогою скрипта з `другої частини <#id4>`__, запускає на виконання скрипт з `першої частини <#id3>`__.
 
+Посилання
+=========
+
+- `Online Bash Shell IDE <https://www.jdoodle.com/test-bash-shell-script-online/>`_.
+
+- `Execute Bash Shell Online <https://www.tutorialspoint.com/unix_terminal_online.php>`_.
+
+- `Linux Containers demo server (with a 30-minute time limit) <https://linuxcontainers.org/lxd/try-it/>`_.
+
