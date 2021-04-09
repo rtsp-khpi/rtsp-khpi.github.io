@@ -57,6 +57,7 @@ html_favicon = '_static/img/bio.png'
 #
 #html_theme = 'alabaster'
 html_theme = 'insegel'
+#html_theme = 'furo'
 
 #html_theme_path = ['themes']  # папка внутри source, где лежат папки тем
 

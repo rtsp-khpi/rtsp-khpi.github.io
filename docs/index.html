@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2D2D2D" />
   
-  <title>Програмування систем реального часу :: Bash: command line, shell scripting</title>
+  <title>Програмування систем реального часу :: Програма курсу</title>
   
 
   <link rel="icon" type="image/png" href="_static/img/bio.png">
@@ -52,47 +52,70 @@
 
       <div id="main-content-container">
         <div id="main-content-header">
-          <h1>Bash: command line, shell scripting</h1>
+          <h1>Програма курсу</h1>
         </div>
         <div id="main-content">
           
-  <div class="section" id="bash-command-line-shell-scripting">
-<h1>Bash: command line, shell scripting<a class="headerlink" href="#bash-command-line-shell-scripting" title="Постійне посилання на цей заголовок">¶</a></h1>
-<div class="section" id="id1">
-<h2>Призначення<a class="headerlink" href="#id1" title="Постійне посилання на цей заголовок">¶</a></h2>
-<p>Очищення директорії від зайвих файлів.</p>
+  <div class="toctree-wrapper compound">
 </div>
+<div class="section" id="id1">
+<h1>Програма курсу<a class="headerlink" href="#id1" title="Постійне посилання на цей заголовок">¶</a></h1>
+<ol class="arabic simple">
+<li><p>ОС Linux: обзор, файловая система, командная оболочка. Bash: command line, shell scripting.</p></li>
+<li><p>Програмування мовою Сі для ОС Linux. GCC, CLANG. Розробка та налагодження програм. Створення статичних і динамічних бібліотек. Linux kernel coding style. QEMU.</p></li>
+<li><p>Ядро ОС Linux: огляд, структура, збірка, встановлення. Модулі ядра: завантаження, видалення, залежності, діагностика, налагодження.</p></li>
+<li><p>Віртуальна файлова система. Програмний інтерфейс. Ресурси.</p></li>
+</ol>
+<hr class="docutils" />
 <div class="section" id="id2">
-<h2>Опис<a class="headerlink" href="#id2" title="Постійне посилання на цей заголовок">¶</a></h2>
-<div class="section" id="id3">
-<h3>1. Видалення зайвих файлів<a class="headerlink" href="#id3" title="Постійне посилання на цей заголовок">¶</a></h3>
-<p>Розробити bash-скрипт, який видаляє в директорії всі файли з назвою:</p>
+<h2>Інструменти розробки<a class="headerlink" href="#id2" title="Постійне посилання на цей заголовок">¶</a></h2>
 <ul class="simple">
-<li><p>що закінчується символами <strong>.tmp</strong>;</p></li>
-<li><p>що починається символами <strong>-</strong>, <strong>_</strong> або <strong>~</strong>.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/GNU_Compiler_Collection">GNU Compiler Collection</a>.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Clang">Clang</a> with <a class="reference external" href="https://en.wikipedia.org/wiki/LLVM">LLVM</a> (<a class="reference external" href="https://apt.llvm.org/">Ubuntu packages</a>, <a class="reference external" href="http://releases.llvm.org/download.html">download page</a>). Handy tools: <a class="reference external" href="https://clang.llvm.org/docs/LeakSanitizer.html">LeakSanitizer</a>, <a class="reference external" href="https://clang-analyzer.llvm.org/scan-build.html">scan-build</a>, <a class="reference external" href="https://clang.llvm.org/docs/ClangFormat.html">ClangFormat</a>.</p></li>
+<li><p><a class="reference external" href="http://cppcheck.sourceforge.net/">Cppcheck</a>.</p></li>
+<li><p><a class="reference external" href="http://valgrind.org/">Valgrind</a>.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="id3">
+<h2>Посилання<a class="headerlink" href="#id3" title="Постійне посилання на цей заголовок">¶</a></h2>
+<div class="section" id="linux">
+<h3>ОС Linux<a class="headerlink" href="#linux" title="Постійне посилання на цей заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.kernel.org/doc/html/latest/">The Linux Kernel documentation</a>.</p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.ru/wiki/%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D1%8B_%D0%B8_%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%8B%D0%B5_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B_linux">Разделы и файловые системы Linux</a>.</p></li>
+<li><p><a class="reference external" href="https://ru.wikipedia.org/wiki/FHS">Стандарт иерархии файловой системы</a>.</p></li>
+<li><p><a class="reference external" href="https://ru.wikipedia.org/wiki/Procfs">Специальная файловая система - procfs</a>.</p></li>
+<li><p><a class="reference external" href="https://help.ubuntu.ru/wiki/%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D1%80%D0%B0%D0%B2%D0%B0_unix">Стандартные права Unix</a>.</p></li>
+<li><p><a class="reference external" href="https://ru.wikipedia.org/wiki/Bash">Bash</a>.</p></li>
+<li><p><a class="reference external" href="http://www.opennet.ru/docs/RUS/bash_scripting_guide/">Искусство программирования на языке сценариев командной оболочки</a>.</p></li>
+<li><p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B8">Стандартные потоки ввода-вывода</a>.</p></li>
+<li><p><a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B0">Перенаправление ввода-вывода</a>.</p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/ru/library/l-linux_kernel_01/">Разработка модулей ядра Linux</a>.</p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/ru/library/l-linux_kernel_75/index.html">Отладка в ядре. Общие положения</a>.</p></li>
+<li><p><a class="reference external" href="https://www.ibm.com/developerworks/ru/library/l-linux_kernel_76/">Отладка в ядре. Практические советы</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="c-programming-language">
+<h3>C Programming Language<a class="headerlink" href="#c-programming-language" title="Постійне посилання на цей заголовок">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/ANSI_C">Wiki. ANSI C</a>.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Makefile">Wiki. Makefile</a>.</p></li>
+<li><p><a class="reference external" href="http://port70.net/~nsz/c/">HTML and PDF versions of C89, C99, and C11</a>.</p></li>
+<li><p><a class="reference external" href="https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard">SEI CERT C Coding Standard</a>.</p></li>
+<li><p><a class="reference external" href="https://en.cppreference.com/w/c">C Reference</a>.</p></li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/make/manual/">GNU Make Manual</a>.</p></li>
+<li><p>Making Code More Secure with GCC: <a class="reference external" href="https://blogs.oracle.com/linux/making-code-more-secure-with-gcc-part-1">Part 1</a>, <a class="reference external" href="https://blogs.oracle.com/linux/making-code-more-secure-with-gcc-part-2">Part 2</a>.</p></li>
 </ul>
 <div class="admonition attention">
 <p class="admonition-title">Увага</p>
-<p><strong>1)</strong> Назва директорії передається як параметр. Якщо не вказана директорія, використовувати поточну.</p>
-<p><strong>2)</strong> Якщо передається ключ <strong>-h</strong> або <strong>–help</strong>, виводити коротку інструкцію про використання.</p>
-<p><strong>3)</strong> Якщо передається ключ <strong>-r</strong> або <strong>–recursive</strong>:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>виконувати видалення в усіх вкладених директоріях;</p></li>
-<li><p>видалити порожні директорії після рекурсивного видалення (виключаючи початкову).</p></li>
-</ul>
-</div></blockquote>
-<p><strong>4)</strong> Якщо першим параметром передається ключ <strong>-y</strong> або <strong>–yes</strong>, виключити необхідність відповідати стверджувально на питання системи.</p>
-<p><strong>5)</strong> Якщо передається ключ <strong>-t</strong> або <strong>–test</strong>, виводити шляхи до файлів, що підлягають видаленню, але самі файли не видаляти.</p>
+<p>Set the Proxy for APT on Ubuntu</p>
+<p><strong>1)</strong> Create the following file:</p>
+<p><em>/etc/apt/apt.conf.d/proxy.conf</em></p>
+<p><strong>2)</strong> Add the following lines:</p>
+<p><em>Acquire::http::proxy «http://172.17.10.2:3128»;</em></p>
+<p><em>Acquire::https::proxy «http://172.17.10.2:3128»;</em></p>
 </div>
-</div>
-<div class="section" id="id4">
-<h3>2. Визначення файлів, що не використовуються<a class="headerlink" href="#id4" title="Постійне посилання на цей заголовок">¶</a></h3>
-<p>Розробити bash-скрипт, який до імен файлів вказаній директорії, які не змінилися за останній місяць, додає символ <strong>~</strong>. Тобто якщо файл <strong>file</strong> не змінювався, перейменувати його в <strong>~file</strong>.</p>
-</div>
-<div class="section" id="id5">
-<h3>3. Визначення та видалення зайвих файлів<a class="headerlink" href="#id5" title="Постійне посилання на цей заголовок">¶</a></h3>
-<p>Розробити bash-скрипт, який, у випадку перейменування хоча б одного файлу у вказаній директорії за допомогою скрипта з <a class="reference external" href="#id4">другої частини</a>, запускає на виконання скрипт з <a class="reference external" href="#id3">першої частини</a>.</p>
 </div>
 </div>
 </div>
@@ -118,19 +141,14 @@
     
   
   
-    <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">Bash: command line, shell scripting</a><ul>
-<li><a class="reference internal" href="#id1">Призначення</a></li>
-<li><a class="reference internal" href="#id2">Опис</a><ul>
-<li><a class="reference internal" href="#id3">1. Видалення зайвих файлів</a></li>
-<li><a class="reference internal" href="#id4">2. Визначення файлів, що не використовуються</a></li>
-<li><a class="reference internal" href="#id5">3. Визначення та видалення зайвих файлів</a></li>
+    <p class="caption"><span class="caption-text">Лабораторні роботи</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="labs/lab05.html">5. Bash: command line, shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs/lab06.html">6. Програмування мовою Сі для ОС Linux. QEMU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs/lab07.html">7. Модулі ядра: завантаження, видалення, залежності</a></li>
+<li class="toctree-l1"><a class="reference internal" href="labs/lab08.html">8. Віртуальна файлова система. Програмний інтерфейс</a></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
+
   
 
 

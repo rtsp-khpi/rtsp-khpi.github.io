@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2D2D2D" />
+  
+  <title>Програмування систем реального часу :: 5. Bash: command line, shell scripting</title>
+  
+
+  <link rel="icon" type="image/png" href="../_static/img/bio.png">
+        <link rel="index" title="Індекс"
+              href="../genindex.html"/>
+
+  <link rel="stylesheet" href="../_static/css/insegel.css"/>
+
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:'',
+        VERSION:'0.0.1',
+        LANGUAGE:'uk_UA',
+        COLLAPSE_INDEX:false,
+        FILE_SUFFIX:'.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+    };
+  </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/translations.js"></script>
+
+  <script src="https://email.tl.fortawesome.com/c/eJxNjUEOgyAQAF8jR7Kw6wIHDh7sP1Cw2mgxgmn6-3JsMqc5zEQfE8dkxOY1KKMUOI3ACFKRJpSW2AAp7ontYIaxI6i7XPJVwyeVfCQ550Os3jLrGSNOLgbdAy6s0PBk2TFNjEbsfq31LB0OnX407pJa5v2faRadwSW63mn5KuLyR9j2tgx3zecanl-55R_-jjPs"></script>
+
+</head>
+
+<body>
+  <div id="insegel-container">
+    <header>
+      <div id="logo-container">
+          
+          <a href="../index.html"><img src="../_static/logo.svg"></a>
+          
+
+      </div>
+      <div id="project-container">
+        <h1>Програмування систем реального часу</h1>
+      </div>
+    </header>
+
+    <div id="content-container">
+
+      <div id="main-content-container">
+        <div id="main-content-header">
+          <h1>5. Bash: command line, shell scripting</h1>
+        </div>
+        <div id="main-content">
+          
+  <div class="section" id="bash-command-line-shell-scripting">
+<h1>5. Bash: command line, shell scripting<a class="headerlink" href="#bash-command-line-shell-scripting" title="Постійне посилання на цей заголовок">¶</a></h1>
+<div class="section" id="id1">
+<h2>Призначення<a class="headerlink" href="#id1" title="Постійне посилання на цей заголовок">¶</a></h2>
+<p>Очищення директорії від зайвих файлів.</p>
+</div>
+<div class="section" id="id2">
+<h2>Опис<a class="headerlink" href="#id2" title="Постійне посилання на цей заголовок">¶</a></h2>
+<div class="section" id="id3">
+<h3>1. Видалення зайвих файлів<a class="headerlink" href="#id3" title="Постійне посилання на цей заголовок">¶</a></h3>
+<p>Розробити bash-скрипт, який видаляє в директорії всі файли з назвою:</p>
+<ul class="simple">
+<li><p>що закінчується символами <strong>.tmp</strong>;</p></li>
+<li><p>що починається символами <strong>-</strong>, <strong>_</strong> або <strong>~</strong>.</p></li>
+</ul>
+<div class="admonition attention">
+<p class="admonition-title">Увага</p>
+<p><strong>1)</strong> Назва директорії передається як параметр. Якщо не вказана директорія, використовувати поточну.</p>
+<p><strong>2)</strong> Якщо передається ключ <strong>-h</strong> або <strong>–help</strong>, виводити коротку інструкцію про використання.</p>
+<p><strong>3)</strong> Якщо передається ключ <strong>-r</strong> або <strong>–recursive</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>виконувати видалення в усіх вкладених директоріях;</p></li>
+<li><p>видалити порожні директорії після рекурсивного видалення (виключаючи початкову).</p></li>
+</ul>
+</div></blockquote>
+<p><strong>4)</strong> Якщо першим параметром передається ключ <strong>-y</strong> або <strong>–yes</strong>, виключити необхідність відповідати стверджувально на питання системи.</p>
+<p><strong>5)</strong> Якщо передається ключ <strong>-t</strong> або <strong>–test</strong>, виводити шляхи до файлів, що підлягають видаленню, але самі файли не видаляти.</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>2. Визначення файлів, що не використовуються<a class="headerlink" href="#id4" title="Постійне посилання на цей заголовок">¶</a></h3>
+<p>Розробити bash-скрипт, який до імен файлів вказаній директорії, які не змінилися за останній місяць, додає символ <strong>~</strong>. Тобто якщо файл <strong>file</strong> не змінювався, перейменувати його в <strong>~file</strong>.</p>
+</div>
+<div class="section" id="id5">
+<h3>3. Визначення та видалення зайвих файлів<a class="headerlink" href="#id5" title="Постійне посилання на цей заголовок">¶</a></h3>
+<p>Розробити bash-скрипт, який, у випадку перейменування хоча б одного файлу у вказаній директорії за допомогою скрипта з <a class="reference external" href="#id4">другої частини</a>, запускає на виконання скрипт з <a class="reference external" href="#id3">першої частини</a>.</p>
+</div>
+</div>
+</div>
+
+
+        </div>
+      </div>
+
+      <div id="side-menu-container">
+<!--
+        <div id="search" role="search">
+        <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+            <input type="text" name="q" placeholder="Search..." />
+            <input type="hidden" name="check_keywords" value="yes" />
+            <input type="hidden" name="area" value="default" />
+        </form>
+</div>
+-->
+        <div id="side-menu" role="navigation">
+
+          
+  
+    
+  
+  
+    <p class="caption"><span class="caption-text">Лабораторні роботи</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Bash: command line, shell scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab06.html">6. Програмування мовою Сі для ОС Linux. QEMU</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab07.html">7. Модулі ядра: завантаження, видалення, залежності</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab08.html">8. Віртуальна файлова система. Програмний інтерфейс</a></li>
+</ul>
+
+  
+
+
+        </div>
+
+        
+
+      </div>
+
+    </div>
+
+<footer>
+    <div id="footer-info">
+        <ul id="build-details">
+            
+                <li class="footer-element">
+                    
+                        <a href="#" rel="nofollow"> Real Time System Programming</a>
+                    
+                </li>
+            
+
+            
+
+            
+        </ul>
+        <div id="credit">
+            Copyright &copy; 2021 xone
+        </div>
+    </div>
+
+    <a id="menu-toggle" class="fa fa-bars" aria-hidden="true"></a>
+
+    <script type="text/javascript">
+      $("#menu-toggle").click(function() {
+        $("#menu-toggle").toggleClass("toggled");
+        $("#side-menu-container").slideToggle(300);
+      });
+    </script>
+
+</footer> 
+
+</div>
+
+</body>
+</html>
