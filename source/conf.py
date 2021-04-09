@@ -59,10 +59,20 @@ html_favicon = '_static/img/bio.png'
 html_theme = 'insegel'
 #html_theme = 'furo'
 
+#html_show_sourcelink = False
+#html_show_sphinx = False
+
 #html_theme_path = ['themes']  # папка внутри source, где лежат папки тем
 
 #html_theme_options = {
-#    "nosidebar": "true"
+#    "dark_css_variables": {
+#    	"color-background-secondary": "#242424",
+#    },
+#}
+
+#html_theme_options = {
+#     "sidebar_hide_name": True,
+#     "announcement": "<em>Important</em> announcement!",
 #}
 
 # Add any paths that contain custom static files (such as style sheets) here,
