@@ -40,23 +40,20 @@
 --------
 
 - `The Linux Kernel documentation <https://www.kernel.org/doc/html/latest/>`_.
+- `Wiki: Standard input/output streams <https://en.wikipedia.org/wiki/Standard_streams>`_.
+- `Wiki: Redirecting standard input and standard output <https://en.wikipedia.org/wiki/Redirection_(computing)>`_.
+- `Wiki: Bash <https://en.wikipedia.org/wiki/Bash_(Unix_shell)>`_.
+- `Wiki: Filesystem Hierarchy Standard <https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard>`_.
+- `Wiki: proc filesystem <https://en.wikipedia.org/wiki/Procfs>`_.
 - `Разделы и файловые системы Linux <https://help.ubuntu.ru/wiki/%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D1%8B_%D0%B8_%D1%84%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%8B%D0%B5_%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B_linux>`_.
-- `Стандарт иерархии файловой системы <https://ru.wikipedia.org/wiki/FHS>`_.
-- `Специальная файловая система - procfs <https://ru.wikipedia.org/wiki/Procfs>`_.
 - `Стандартные права Unix <https://help.ubuntu.ru/wiki/%D1%81%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D1%80%D0%B0%D0%B2%D0%B0_unix>`_.
-- `Bash <https://ru.wikipedia.org/wiki/Bash>`_.
 - `Искусство программирования на языке сценариев командной оболочки <http://www.opennet.ru/docs/RUS/bash_scripting_guide/>`_.
-- `Стандартные потоки ввода-вывода <https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B0%D0%BD%D0%B4%D0%B0%D1%80%D1%82%D0%BD%D1%8B%D0%B5_%D0%BF%D0%BE%D1%82%D0%BE%D0%BA%D0%B8>`_.
-- `Перенаправление ввода-вывода <https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B5%D0%BD%D0%B0%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_%D0%B2%D0%B2%D0%BE%D0%B4%D0%B0-%D0%B2%D1%8B%D0%B2%D0%BE%D0%B4%D0%B0>`_.
-- `Разработка модулей ядра Linux <https://www.ibm.com/developerworks/ru/library/l-linux_kernel_01/>`_.
-- `Отладка в ядре. Общие положения <https://www.ibm.com/developerworks/ru/library/l-linux_kernel_75/index.html>`_.
-- `Отладка в ядре. Практические советы <https://www.ibm.com/developerworks/ru/library/l-linux_kernel_76/>`_.
 
 C Programming Language
 ----------------------
 
-- `Wiki. ANSI C <https://en.wikipedia.org/wiki/ANSI_C>`_.
-- `Wiki. Makefile <https://en.wikipedia.org/wiki/Makefile>`_.
+- `Wiki: ANSI C <https://en.wikipedia.org/wiki/ANSI_C>`_.
+- `Wiki: Makefile <https://en.wikipedia.org/wiki/Makefile>`_.
 - `HTML and PDF versions of C89, C99, and C11 <http://port70.net/~nsz/c/>`_.
 - `SEI CERT C Coding Standard <https://wiki.sei.cmu.edu/confluence/display/c/SEI+CERT+C+Coding+Standard>`_.
 - `C Reference <https://en.cppreference.com/w/c>`_.
