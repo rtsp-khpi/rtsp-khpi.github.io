@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2D2D2D" />
   
-  <title>Програмування систем реального часу :: 6. Програмування мовою Сі для ОС Linux. QEMU</title>
+  <title>Програмування систем реального часу :: 6. Програмування мовою Сі для ОС Linux</title>
   
 
   <link rel="icon" type="image/png" href="../_static/img/bio.png">
@@ -52,19 +52,34 @@
 
       <div id="main-content-container">
         <div id="main-content-header">
-          <h1>6. Програмування мовою Сі для ОС Linux. QEMU</h1>
+          <h1>6. Програмування мовою Сі для ОС Linux</h1>
         </div>
         <div id="main-content">
           
-  <div class="section" id="linux-qemu">
-<h1>6. Програмування мовою Сі для ОС Linux. QEMU<a class="headerlink" href="#linux-qemu" title="Постійне посилання на цей заголовок">¶</a></h1>
+  <div class="section" id="linux">
+<h1>6. Програмування мовою Сі для ОС Linux<a class="headerlink" href="#linux" title="Постійне посилання на цей заголовок">¶</a></h1>
 <div class="section" id="id1">
 <h2>Призначення<a class="headerlink" href="#id1" title="Постійне посилання на цей заголовок">¶</a></h2>
-<p>Under development.</p>
+<p>Розробка програми на мовою Сі <a class="reference external" href="https://uk.wikipedia.org/wiki/%D0%9A%D0%BE%D1%81%D1%82%D1%96_(%D0%B3%D1%80%D0%B0)">Гра в кості</a>.</p>
 </div>
-<div class="section" id="id2">
-<h2>Опис<a class="headerlink" href="#id2" title="Постійне посилання на цей заголовок">¶</a></h2>
-<p>Under development.</p>
+<div class="section" id="id3">
+<h2>Опис<a class="headerlink" href="#id3" title="Постійне посилання на цей заголовок">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Для автоматизації побудови програми використовувати утиліту <a class="reference external" href="https://en.wikipedia.org/wiki/Make_(software)">make</a>.</p></li>
+<li><p>Створити і використовувати статичну бібліотеку.</p></li>
+</ol>
+<div class="admonition attention">
+<p class="admonition-title">Увага</p>
+<p><em>Приклад створення бібліотеки util</em></p>
+<p>gcc -c util.c</p>
+<p>ar -r libutil.a util.o</p>
+<p>gcc main.c -o main -static -L./ -lutil</p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Для зберігання результатів (ім’я користувача, результати підрахунку балів гравців, результат гри, відмітка про час) використовувати <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/list.h">двоспрямовані списки</a>.</p></li>
+<li><p>Режими гри визначати параметрами командного рядка.</p></li>
+<li><p>Розробити скрипт побудови і тестування (перевірка результатів виконання) програми.</p></li>
+</ol>
 </div>
 </div>
 
@@ -92,7 +107,7 @@
     <p class="caption"><span class="caption-text">Лабораторні роботи</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="lab05.html">5. Bash: command line, shell scripting</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Програмування мовою Сі для ОС Linux. QEMU</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Програмування мовою Сі для ОС Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab07.html">7. Модулі ядра: завантаження, видалення, залежності</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab08.html">8. Віртуальна файлова система. Програмний інтерфейс</a></li>
 </ul>
