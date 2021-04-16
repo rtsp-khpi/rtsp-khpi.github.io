@@ -68,39 +68,50 @@
 <li><p>Для автоматизації побудови програми використовувати утиліту <a class="reference external" href="https://en.wikipedia.org/wiki/Make_(software)">make</a>. Реалізувати цілі:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>help,</p></li>
-<li><p>release,</p></li>
-<li><p>debug,</p></li>
-<li><p>test,</p></li>
-<li><p>dist,</p></li>
-<li><p>install,</p></li>
-<li><p>uninstall,</p></li>
-<li><p>clean,</p></li>
-<li><p>distclean.</p></li>
+<li><p>help - виведення довідкової інформації.</p></li>
+<li><p>release - побудова програми для випуску.</p></li>
+<li><p>debug - побудова програми для відлагодження.</p></li>
+<li><p>test - перевірки функціональності.</p></li>
+<li><p>dist - створення <a class="reference external" href="https://en.wikipedia.org/wiki/Deb_(file_format)">deb-пакету</a> для його подальшого встановлення командою <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dpkg</span> <span class="pre">-i</span> <span class="pre">file_name.deb</span></code> (<a class="reference external" href="https://linuxconfig.org/easy-way-to-create-a-debian-package-and-local-package-repository">Easy way to create a Debian package</a>).</p></li>
+<li><p>install - встановлення до зазначеної директорії.</p></li>
+<li><p>uninstall - видалення раніше встановленої програми.</p></li>
+<li><p>clean - очищення робочого каталогу.</p></li>
+<li><p>distclean - видалення з робочого каталогу файлів раніше створеного пакета для встановлення.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Дотримуватися <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux kernel coding style</a>.</p></li>
+<li><p>Дотримуватися <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux kernel coding style</a>. Файл <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/.clang-format">.clang-format</a>.</p></li>
 <li><p>Використовувати наступні назви директорій:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>src - для розташування початкових кодів;</p></li>
-<li><p>bin - для розташування результатів компіляції;</p></li>
-<li><p>lib - для розташування створеної бібліотеки;</p></li>
+<li><p>src - для розташування початкових кодів.</p></li>
+<li><p>bin - для розташування результатів компіляції.</p></li>
+<li><p>lib - для розташування створеної бібліотеки.</p></li>
 <li><p>/opt/your_app_name - директорія для встановлення.</p></li>
 </ul>
 </div></blockquote>
 </li>
-<li><p>Створити і використовувати статичну бібліотеку.</p></li>
-</ol>
-<div class="admonition attention">
-<p class="admonition-title">Увага</p>
-<p><em>Приклад створення бібліотеки util</em></p>
-<p>gcc -c util.c</p>
-<p>ar -r libutil.a util.o</p>
-<p>gcc main.c -o main -static -L./ -lutil</p>
+<li><p>Створити і використовувати статичну бібліотеку.</p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Приклад створення бібліотеки util</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc -c util.c
+ar -r libutil.a util.o
+gcc main.c -o main -static -L./ -lutil
+</pre></div>
 </div>
-<ol class="arabic simple" start="5">
+</div>
+</div></blockquote>
+</li>
+<li><p>Продемонструвати відсутність витоку пам’яті з використанням відповідних допоміжних засобів, наприклад:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc -std<span class="o">=</span>c99 -pedantic-errors -Wall -Wextra -fsanitize<span class="o">=</span>leak -O0 -g xxx.c
+cppcheck --enable<span class="o">=</span>all --addon<span class="o">=</span>cert.py .
+valgrind --leak-check<span class="o">=</span>full --leak-resolution<span class="o">=</span>med ./xxx
+</pre></div>
+</div>
+</div></blockquote>
+</li>
 <li><p>Для зберігання результатів (ім’я користувача, результати підрахунку балів гравців, результат гри, відмітка про час) використовувати <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/list.h">двоспрямовані списки</a>.</p></li>
 <li><p>Режими гри визначати параметрами командного рядка.</p></li>
 <li><p>Розробити скрипт побудови і тестування (перевірка результатів виконання) програми.</p></li>
