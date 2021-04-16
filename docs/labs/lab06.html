@@ -65,56 +65,77 @@
 <div class="section" id="id3">
 <h2>Опис<a class="headerlink" href="#id3" title="Постійне посилання на цей заголовок">¶</a></h2>
 <ol class="arabic">
-<li><p>Для автоматизації побудови програми використовувати утиліту <a class="reference external" href="https://en.wikipedia.org/wiki/Make_(software)">make</a>. Реалізувати цілі:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>help - виведення довідкової інформації.</p></li>
-<li><p>release - побудова програми для випуску.</p></li>
-<li><p>debug - побудова програми для відлагодження.</p></li>
-<li><p>test - перевірки функціональності.</p></li>
-<li><p>dist - створення <a class="reference external" href="https://en.wikipedia.org/wiki/Deb_(file_format)">deb-пакету</a> для його подальшого встановлення командою <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">dpkg</span> <span class="pre">-i</span> <span class="pre">file_name.deb</span></code> (<a class="reference external" href="https://linuxconfig.org/easy-way-to-create-a-debian-package-and-local-package-repository">Easy way to create a Debian package</a>).</p></li>
-<li><p>install - встановлення до зазначеної директорії.</p></li>
-<li><p>uninstall - видалення раніше встановленої програми.</p></li>
-<li><p>clean - очищення робочого каталогу.</p></li>
-<li><p>distclean - видалення з робочого каталогу файлів раніше створеного пакета для встановлення.</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>Дотримуватися <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux kernel coding style</a>. Файл <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/.clang-format">.clang-format</a>.</p></li>
+<li><p>Дотримуватися <a class="reference external" href="https://www.kernel.org/doc/html/latest/process/coding-style.html">Linux kernel coding style</a>. Конфігураційний файл <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/plain/.clang-format">.clang-format</a> для утиліти автоматичного форматування початкового коду <a class="reference external" href="https://clang.llvm.org/docs/ClangFormat.html#standalone-tool">clang-format</a>.</p></li>
 <li><p>Використовувати наступні назви директорій:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>src - для розташування початкових кодів.</p></li>
-<li><p>bin - для розташування результатів компіляції.</p></li>
-<li><p>lib - для розташування створеної бібліотеки.</p></li>
-<li><p>/opt/your_app_name - директорія для встановлення.</p></li>
+<li><p><em>src</em> - для розташування початкових кодів.</p></li>
+<li><p><em>bin</em> - для розташування результатів компіляції.</p></li>
+<li><p><em>lib</em> - для розташування створеної бібліотеки.</p></li>
+<li><p><em>/opt/your_app_name</em> - для встановлення за замовчуванням.</p></li>
 </ul>
+</div></blockquote>
+</li>
+<li><p>Автоматизувати побудову програми за допомогою утиліти <a class="reference external" href="https://en.wikipedia.org/wiki/Make_(software)">make</a>. Реалізувати цілі:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><em>help</em> - виведення довідкової інформації.</p></li>
+<li><p><em>release</em> - побудова програми для випуску.</p></li>
+<li><p><em>debug</em> - побудова програми для відлагодження.</p></li>
+<li><p><em>test</em> - перевірка функціональності.</p></li>
+<li><p><em>install</em> - встановлення до зазначеної директорії.</p></li>
+<li><p><em>uninstall</em> - видалення раніше встановленої програми.</p></li>
+<li><p><em>clean</em> - очищення робочого каталогу.</p></li>
+<li><p><em>dist</em> - створення <a class="reference external" href="https://en.wikipedia.org/wiki/Deb_(file_format)">deb-пакету</a> (<a class="reference external" href="https://linuxconfig.org/easy-way-to-create-a-debian-package-and-local-package-repository">Easy way to create a Debian package</a>).</p></li>
+<li><p><em>distclean</em> - видалення з робочого каталогу файлів раніше створеного deb-пакета.</p></li>
+</ul>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><em>Приклад. Команда встановлення пакету file_name.deb</em></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo dpkg -i file_name.deb
+</pre></div>
+</div>
+</div>
 </div></blockquote>
 </li>
 <li><p>Створити і використовувати статичну бібліотеку.</p>
 <blockquote>
-<div><div class="literal-block-wrapper docutils container" id="id5">
-<div class="code-block-caption"><span class="caption-text">Приклад створення бібліотеки util</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc -c util.c
-ar -r libutil.a util.o
-gcc main.c -o main -static -L./ -lutil
+<div><div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><em>Приклад. Створення і використання бібліотеки util</em></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a library named util</span>
+gcc -c file01.c file02.c
+ar rcs libutil.a file01.o file02.o
+
+<span class="c1"># Using the library</span>
+gcc main.c -L./ -lutil -o main.bin
+
+<span class="c1"># List symbols from the library</span>
+nm libutil.a
 </pre></div>
 </div>
 </div>
 </div></blockquote>
 </li>
-<li><p>Продемонструвати відсутність витоку пам’яті з використанням відповідних допоміжних засобів, наприклад:</p>
+<li><p>Режими гри визначати параметрами командного рядка (кількість гральних кісточок, кількість гравців, вид гри тощо).</p></li>
+<li><p>Для зберігання результатів (ім’я користувача, результати підрахунку балів гравців, результат гри, відмітка про час) використовувати <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/list.h">двоспрямовані списки</a>.</p></li>
+<li><p>Продемонструвати відсутність витоку пам’яті за допомогою додаткових програмних засобів, наприклад: <a class="reference external" href="https://github.com/danmar/cppcheck">Cppcheck</a>, <a class="reference external" href="https://clang.llvm.org/docs/LeakSanitizer.html">LeakSanitizer</a>, <a class="reference external" href="https://www.valgrind.org/docs/manual/quick-start.html#quick-start.mcrun">Memcheck</a>.</p>
 <blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>gcc -std<span class="o">=</span>c99 -pedantic-errors -Wall -Wextra -fsanitize<span class="o">=</span>leak -O0 -g xxx.c
+<div><div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><em>Приклад. Перевірка наявності витоку пам’яті</em></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using GCC memory leak detector</span>
+gcc -std<span class="o">=</span>c99 -pedantic-errors -Wall -Wextra -fsanitize<span class="o">=</span>leak -O0 -g -o xxx xxx.c
+./xxx
+
+<span class="c1"># Use Cppcheck to check all source files in the current directory</span>
 cppcheck --enable<span class="o">=</span>all --addon<span class="o">=</span>cert.py .
+
+<span class="c1"># Running your program named xxx under Memcheck</span>
 valgrind --leak-check<span class="o">=</span>full --leak-resolution<span class="o">=</span>med ./xxx
 </pre></div>
 </div>
+</div>
 </div></blockquote>
 </li>
-<li><p>Для зберігання результатів (ім’я користувача, результати підрахунку балів гравців, результат гри, відмітка про час) використовувати <a class="reference external" href="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/include/linux/list.h">двоспрямовані списки</a>.</p></li>
-<li><p>Режими гри визначати параметрами командного рядка.</p></li>
-<li><p>Розробити скрипт побудови і тестування (перевірка результатів виконання) програми.</p></li>
+<li><p>Розробити bash-скрипт тестування програми: порівняти результати виконання із заздалегідь відомими значеннями.</p></li>
 </ol>
 </div>
 </div>
