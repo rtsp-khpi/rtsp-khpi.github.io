@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#2D2D2D" />
   
-  <title>Програмування систем реального часу :: 7. Модулі ядра: завантаження, видалення, залежності</title>
+  <title>Програмування систем реального часу :: 7. Модулі ядра: завантаження, видалення</title>
   
 
   <link rel="icon" type="image/png" href="../_static/img/bio.png">
@@ -52,19 +52,205 @@
 
       <div id="main-content-container">
         <div id="main-content-header">
-          <h1>7. Модулі ядра: завантаження, видалення, залежності</h1>
+          <h1>7. Модулі ядра: завантаження, видалення</h1>
         </div>
         <div id="main-content">
           
   <div class="section" id="id1">
-<h1>7. Модулі ядра: завантаження, видалення, залежності<a class="headerlink" href="#id1" title="Постійне посилання на цей заголовок">¶</a></h1>
+<h1>7. Модулі ядра: завантаження, видалення<a class="headerlink" href="#id1" title="Постійне посилання на цей заголовок">¶</a></h1>
 <div class="section" id="id2">
 <h2>Призначення<a class="headerlink" href="#id2" title="Постійне посилання на цей заголовок">¶</a></h2>
-<p>Under development.</p>
+<p>Створення простого модуля ядра.</p>
 </div>
 <div class="section" id="id3">
 <h2>Опис<a class="headerlink" href="#id3" title="Постійне посилання на цей заголовок">¶</a></h2>
-<p>Under development.</p>
+<p>Нижче наводяться приклади та інструкції для ОС <a class="reference external" href="https://ubuntu.com/">Ubuntu</a>. За потребою встановіть необхідні інструменти (див. <a class="reference external" href="https://wiki.ubuntu.com/Kernel/BuildYourOwnKernel#Build_Environment">Build Environment</a>).</p>
+<ol class="arabic">
+<li><p>Встановіть пакет <strong>Linux Kernel headers</strong> для вашої версії ядра.</p>
+<blockquote>
+<div><div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>sudo apt-get install linux-headers-<span class="k">$(</span>uname -r<span class="k">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Побудуйте та протестуйте модуль <strong>ex01</strong></p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><em>ex01.c</em></span><a class="headerlink" href="#id4" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;linux/init.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;linux/kernel.h&gt;</span><span class="cp"></span>
+
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
+<span class="n">MODULE_AUTHOR</span><span class="p">(</span><span class="s">&quot;xone&quot;</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">&quot;A simple example Linux module.&quot;</span><span class="p">);</span>
+<span class="n">MODULE_VERSION</span><span class="p">(</span><span class="s">&quot;0.01&quot;</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__init</span> <span class="n">ex01_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;Hello!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="n">__exit</span> <span class="n">ex01_exit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;Bye...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">module_init</span><span class="p">(</span><span class="n">ex01_init</span><span class="p">);</span>
+<span class="n">module_exit</span><span class="p">(</span><span class="n">ex01_exit</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><em>Makefile</em></span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">obj-m</span> <span class="o">+=</span> ex01.o
+<span class="nf">all</span><span class="o">:</span>
+    make -C /lib/modules/<span class="k">$(</span>shell uname -r<span class="k">)</span>/build <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> modules
+<span class="nf">clean</span><span class="o">:</span>
+    make -C /lib/modules/<span class="k">$(</span>shell uname -r<span class="k">)</span>/build <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> clean
+<span class="nf">test</span><span class="o">:</span>
+    sudo dmesg -C
+    sudo insmod ex01.ko
+    sudo rmmod ex01.ko
+    dmesg
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Побудуйте, виправте помилки та протестуйте модулі <strong>ex02</strong> та <strong>test_ex02</strong></p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><em>ex02.c</em></span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
+
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
+<span class="n">MODULE_AUTHOR</span><span class="p">(</span><span class="s">&quot;xone&quot;</span><span class="p">);</span>
+<span class="n">MODULE_VERSION</span><span class="p">(</span><span class="s">&quot;0.01&quot;</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">&quot;A simple example Linux module.&quot;</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="kt">char</span> <span class="n">retpref</span><span class="p">[]</span> <span class="o">=</span> <span class="s">&quot;this string returned from &quot;</span><span class="p">;</span>
+
+<span class="kt">char</span> <span class="o">*</span><span class="nf">test_01</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="k">static</span> <span class="kt">char</span> <span class="n">res</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">retpref</span><span class="p">);</span>
+        <span class="n">strcat</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">EXPORT_SYMBOL</span><span class="p">(</span><span class="n">test_01</span><span class="p">);</span>
+
+<span class="kt">char</span> <span class="o">*</span><span class="nf">test_02</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="k">static</span> <span class="kt">char</span> <span class="n">res</span><span class="p">[</span><span class="mi">80</span><span class="p">];</span>
+        <span class="n">strcpy</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">retpref</span><span class="p">);</span>
+        <span class="n">strcat</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">__FUNCTION__</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">res</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">EXPORT_SYMBOL</span><span class="p">(</span><span class="n">test_02</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__init</span> <span class="n">xinit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;ex02: Hello!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;ex02: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_01</span><span class="p">());</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;ex02: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_02</span><span class="p">());</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">static</span> <span class="kt">void</span> <span class="n">__exit</span> <span class="n">xexit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;ex02: Bye...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><em>test_ex02.c</em></span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;linux/module.h&gt;</span><span class="cp"></span>
+
+<span class="n">MODULE_LICENSE</span><span class="p">(</span><span class="s">&quot;GPL&quot;</span><span class="p">);</span>
+<span class="n">MODULE_AUTHOR</span><span class="p">(</span><span class="s">&quot;xone&quot;</span><span class="p">);</span>
+<span class="n">MODULE_VERSION</span><span class="p">(</span><span class="s">&quot;0.01&quot;</span><span class="p">);</span>
+<span class="n">MODULE_DESCRIPTION</span><span class="p">(</span><span class="s">&quot;Test ex02 Linux module.&quot;</span><span class="p">);</span>
+
+<span class="k">extern</span> <span class="kt">char</span> <span class="o">*</span><span class="n">test_01</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<span class="k">extern</span> <span class="kt">char</span> <span class="o">*</span><span class="n">test_02</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+
+<span class="k">static</span> <span class="kt">int</span> <span class="n">__init</span> <span class="n">xinit</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;test_ex02: Hello!!!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;test_ex02: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_01</span><span class="p">());</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;test_ex02: %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">test_02</span><span class="p">());</span>
+        <span class="n">printk</span><span class="p">(</span><span class="n">KERN_INFO</span> <span class="s">&quot;test_ex02: Bye...</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><em>Makefile</em></span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">obj-m</span> <span class="o">+=</span> ex02.o test_ex02.o
+<span class="nf">all</span><span class="o">:</span>
+        make -C /lib/modules/<span class="k">$(</span>shell uname -r<span class="k">)</span>/build <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> modules
+<span class="nf">clean</span><span class="o">:</span>
+        make -C /lib/modules/<span class="k">$(</span>shell uname -r<span class="k">)</span>/build <span class="nv">M</span><span class="o">=</span><span class="k">$(</span>PWD<span class="k">)</span> clean
+<span class="nf">test</span><span class="o">:</span>
+<span class="c">        # Add your implementation here</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Додайте імплементацію цілі <strong>test</strong>.</p></li>
+<li><p>Отримайте початковий код ядра (див. <a class="reference external" href="../_static/res/kernel_building.pdf">інструкцію, розділ «Get kernel sources»</a>).</p></li>
+<li><p>Виконайте налаштування та побудуйте ядро Linux (див. <a class="reference external" href="../_static/res/kernel_building.pdf">інструкцію, розділ «Configure and build»</a>).</p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text"><em>Quick fixes</em></span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare build directory</span>
+make <span class="nv">O</span><span class="o">=</span><span class="si">${</span><span class="nv">BUILD_KERNEL</span><span class="si">}</span> i386_defconfig
+</pre></div>
+</div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Застереження</p>
+<p>A kernel without a root filesystem is kind of useless.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p>Виконайте побудову <strong>rootfs</strong> за допомогою <strong>Buildroot</strong> (див. <a class="reference external" href="../_static/res/kernel_building.pdf">інструкцію, розділ «Buildroot»</a>).</p></li>
+<li><p>Розгорніть побудовану Linux-систему в <strong>QEMU</strong> (див. <a class="reference external" href="https://help.ubuntu.com/community/KVM/Installation">KVM/QEMU Installation</a>; <a class="reference external" href="../_static/res/kernel_building.pdf">інструкцію, розділ «Launch»</a>).</p>
+<blockquote>
+<div><div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text"><em>Quick fixes</em></span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># Launch QUEMU</span>
+qemu-system-i386 <span class="se">\</span>
+   -kernel <span class="si">${</span><span class="nv">BUILD_KERNEL</span><span class="si">}</span>/arch/i386/boot/bzImage <span class="se">\</span>
+   -append <span class="s2">&quot;root=/dev/sda console=ttyS0&quot;</span> <span class="se">\</span>
+   -drive <span class="nv">format</span><span class="o">=</span>raw,file<span class="o">=</span><span class="si">${</span><span class="nv">BUILD_ROOTFS</span><span class="si">}</span>/images/rootfs.ext3 <span class="se">\</span>
+   -nic user,hostfwd<span class="o">=</span>tcp::8022-:22 <span class="p">&amp;</span>
+</pre></div>
+</div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Виведіть повну інформацію про побудовану систему (версія ядра, ім’я користувача та хоста, версія компілятора, дата та час збірки).</p></li>
+<li><p>Побудуйте тестові модулі ядра для розгорнутої Linux-системи, виконайте їх завантаження та видалення (див. <a class="reference external" href="https://en.wikipedia.org/wiki/Secure_copy_protocol#Secure_Copy_(remote_file_copy_program)">Secure Copy</a>).</p>
+<blockquote>
+<div><div class="admonition important">
+<p class="admonition-title">Важливо</p>
+<p>Основні команди управління модулями:</p>
+<ul class="simple">
+<li><p>insmod - завантажити модуль.</p></li>
+<li><p>rmmod - видалити модуль.</p></li>
+<li><p>lsmod - переглянути завантажені модулі.</p></li>
+<li><p>modinfo - інформація про модуль.</p></li>
+</ul>
+</div>
+</div></blockquote>
+</li>
+</ol>
 </div>
 </div>
 
@@ -93,7 +279,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="lab05.html">5. Bash: command line, shell scripting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab06.html">6. Програмування мовою Сі для ОС Linux</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Модулі ядра: завантаження, видалення, залежності</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Модулі ядра: завантаження, видалення</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lab08.html">8. Віртуальна файлова система. Програмний інтерфейс</a></li>
 </ul>
 
