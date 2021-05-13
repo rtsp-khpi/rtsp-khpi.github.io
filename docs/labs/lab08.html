@@ -60,11 +60,34 @@
 <h1>8. Віртуальна файлова система. Програмний інтерфейс<a class="headerlink" href="#id1" title="Постійне посилання на цей заголовок">¶</a></h1>
 <div class="section" id="id2">
 <h2>Призначення<a class="headerlink" href="#id2" title="Постійне посилання на цей заголовок">¶</a></h2>
-<p>Under development.</p>
+<p>Розробка модуля ядра для трансляції текстових повідомлень.</p>
 </div>
 <div class="section" id="id3">
 <h2>Опис<a class="headerlink" href="#id3" title="Постійне посилання на цей заголовок">¶</a></h2>
-<p>Under development.</p>
+<ol class="arabic">
+<li><p>Створіть <a class="reference external" href="https://en.wikipedia.org/wiki/Loadable_kernel_module">модуль ядра</a>, який:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>змінює порядок символів в кожному слові рядка на зворотний (reverse);</p></li>
+<li><p>перетворює рядок у верхній регістр (uppercase).</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Додайте інтерфейс для роботи з модулем:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>використовуйте <a class="reference external" href="https://en.wikipedia.org/wiki/Device_file">спеціальні файли пристроїв</a> в директорії <strong>/dev</strong> для запису і читання рядка;</p></li>
+<li><p>використовуйте <a class="reference external" href="https://en.wikipedia.org/wiki/Procfs">procfs</a> для встановлення і перевірки режимів трансляції: без перетворення; змінення порядоку символів в словах на зворотний; перетворення в верхній регістр.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Додайте <em>bash</em> скрипт для тестування модуля.</p></li>
+</ol>
+<div class="admonition attention">
+<p class="admonition-title">Увага</p>
+<p><strong>1)</strong> <a class="reference external" href="../_static/res/ex_dev.zip">Приклад використання спеціальних файлів пристроїв.</a></p>
+<p><strong>2)</strong> <a class="reference external" href="../_static/res/ex_procfs.zip">Приклад використання procfs.</a></p>
+</div>
 </div>
 </div>
 
